@@ -12,6 +12,7 @@ app.set('view engine', 'ejs');
 // Serves static files from public folder
 app.use(express.static('public'));
 
+// Route handling for each route
 app.get('/', (req, res) => {
     res.render('index');
 })
