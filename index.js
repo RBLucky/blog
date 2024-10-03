@@ -2,6 +2,9 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://0.0.0.0/my_database', {useNewUrlParser: true});
 
 // Initialize express
 const app = new express();
