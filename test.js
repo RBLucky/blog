@@ -29,12 +29,53 @@ mongoose.connect('mongodb://0.0.0.0:27017/test_db', { useNewUrlParser: true });
 //     console.log(error);
 // })
 
-BlogPost.find({
-    title: "The Mythbuster Guide to Saving Money on Energy Bills"
-})
-.then((blogpost) => {
-    console.log(blogpost);
-})
-.catch((error) => {
-    console.log(error);
-})
+// BlogPost.find({
+//     title: "The Mythbuster Guide to Saving Money on Energy Bills"
+// })
+// .then((blogpost) => {
+//     console.log(blogpost);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
+
+// BlogPost.find({
+//     title: /The/
+// })
+// .then((blogpost) => {
+//     console.log(blogpost);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
+
+//finding a post by ID
+let id = "66fe5789330c186124740107";
+
+BlogPost.findById(id)
+    .then((blogpost) => {
+        console.log(blogpost);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+//updating post
+// BlogPost.findByIdAndUpdate(id, {
+//     title: 'Updated title'
+// })
+//     .then((blogpost) => {
+//         console.log(blogpost);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });
+
+// //deleting post
+// BlogPost.findByIdAndDelete(id)
+//     .then((blogpost) => {
+//         console.log(blogpost);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });
