@@ -23,7 +23,7 @@ app.use(express.urlencoded())
 // Route handling for each route
 app.get('/', async (req, res) => {
     const blogposts = await BlogPost.find({});
-    res.render('index', {blogposts});
+    res.render('index', { blogposts });
 })
 
 app.get('/about', (req, res) => {
@@ -34,8 +34,11 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-app.get('/post', (req, res) => {
-    res.render('post')
+app.get('/post/:id', async (req, res) => {
+    const blogpost = await BlogPost.findById(req.params.id);
+    res.render('post', {
+        blogpost
+    })
 })
 
 app.get('/posts/new', (req, res) => {

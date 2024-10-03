@@ -23,7 +23,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <% for (let i=0; i < blogposts.length; i++) { %>
                         <div class="post-preview">
-                            <a href="/post">
+                            <a href="/post/<%= blogposts[i]._id %>">
                                 <h2 class="post-title">
                                     <%= blogposts[i].title %>
                                 </h2>
@@ -32,8 +32,8 @@
                                 </h3>
                             </a>
                             <p class="post-meta">Posted by
-                                <a href="#">Clean Blog</a>
-                                on October 3, 2024
+                                <a href="#"><%= blogposts[i].username %></a>
+                                on <%= blogposts[i].datePosted.toDateString() %>
                             </p>
                         </div>
                         <hr>
