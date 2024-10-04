@@ -6,6 +6,18 @@ const mongoose = require('mongoose');
 const BlogPost = require('./models/BlogPost');
 const fileUpload = require('express-fileupload');
 
+const customMiddleware = (req, res, next) => {
+    console.log('Custom middleware called');
+    next();
+}
+
+const validateMiddleware = (req, res, next) => {
+    if (req.files == null || req.body.title == null) {
+        return res.redirect('/posts/new')
+    }
+    next()
+}
+
 mongoose.connect('mongodb://0.0.0.0:27017/blog_db', { useNewUrlParser: true });
 
 // Initialize express
@@ -22,6 +34,9 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 app.use(fileUpload());
+
+app.use(customMiddleware);
+app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
 app.get('/', async (req, res) => {
