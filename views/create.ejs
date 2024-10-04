@@ -31,7 +31,7 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form action="/posts/store" method="POST">
+                            <form action="/posts/store" method="POST" enctype="multipart/form-data">
                                 <div class="form-floating">
                                     <input class="form-control" id="title" name="title" type="text" placeholder="Enter a title..." data-sb-validations="required" />
                                     <label>Title</label>
@@ -41,6 +41,13 @@
                                     <textarea class="form-control" id="body" name="body" rows="5"></textarea>
                                     <label>Description</label>
                                     <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                </div>
+
+                                <div class="form-floating">
+                                    <div class="form-group floating-label-form-group controls">
+                                        <label>Image</label>
+                                        <input class="form-control" id="image" name="image" type="file">
+                                    </div>
                                 </div>
                                 <br />
                                 <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>

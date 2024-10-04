@@ -4,6 +4,7 @@ const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const BlogPost = require('./models/BlogPost');
+const fileUpload = require('express-fileupload');
 
 mongoose.connect('mongodb://0.0.0.0:27017/blog_db', { useNewUrlParser: true });
 
@@ -19,6 +20,8 @@ app.use(express.static('public'));
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded())
+
+app.use(fileUpload());
 
 // Route handling for each route
 app.get('/', async (req, res) => {
@@ -45,10 +48,16 @@ app.get('/posts/new', (req, res) => {
     res.render('create')
 })
 
-app.post('/posts/store', async (req, res) => {
-    await BlogPost.create(req.body)
-    res.redirect('/');
-})
+app.post('/posts/store', (req, res) => {
+    let image = req.files.image;
+    image.mv(path.resolve(__dirname, 'public/assets/img', image.name), async (error) => {
+        await BlogPost.create({
+            ...req.body,
+        image: "/assets/img/" + image.name
+    });
+        res.redirect('/');
+    });
+});
 
 // Set port to listen on
 app.listen(4000, () => {
