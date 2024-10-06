@@ -9,7 +9,7 @@ const fileUpload = require('express-fileupload');
 const customMiddleware = (req, res, next) => {
     console.log('Custom middleware called');
     next();
-}
+};
 
 const validateMiddleware = (req, res, next) => {
     if (req.files == null || req.body.title == null) {
