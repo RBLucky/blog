@@ -37,7 +37,7 @@ app.use(express.urlencoded())
 
 app.use(fileUpload());
 
-app.use(customMiddleware);
+//app.use(customMiddleware);
 app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
