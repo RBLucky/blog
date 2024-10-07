@@ -11,6 +11,7 @@ const storePostController = require('./controllers/storePost');
 const pagesController = require('./controllers/pagesController');
 const homeController = require('./controllers/home');
 const validateMiddleware = require('./middleware/validationMiddleware');
+const newUserController = require('./controllers/newUser');
 
 
 // const customMiddleware = (req, res, next) => {
@@ -41,6 +42,7 @@ app.use(fileUpload());
 app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
+app.get('/auth/register', newUserController);
 app.get('/', homeController)
 
 app.get('/about', pagesController.about);
