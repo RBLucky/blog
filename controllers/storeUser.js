@@ -8,6 +8,7 @@ module.exports = (req, res) => {
             res.redirect('/');
         })
         .catch((error) => {
-            res.redirect('/');
+            console.log(error)
+            res.redirect('/auth/register');
         })
 }
