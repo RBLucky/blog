@@ -5,6 +5,7 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const BlogPost = require('./models/BlogPost');
 const fileUpload = require('express-fileupload');
+const newPostController = require('./controllers/newPost')
 
 const customMiddleware = (req, res, next) => {
     console.log('Custom middleware called');
@@ -59,9 +60,7 @@ app.get('/post/:id', async (req, res) => {
     })
 })
 
-app.get('/posts/new', (req, res) => {
-    res.render('create')
-})
+app.get('/posts/new', newPostController)
 
 app.post('/posts/store', (req, res) => {
     let image = req.files.image;
