@@ -7,6 +7,7 @@ const BlogPost = require('./models/BlogPost');
 const fileUpload = require('express-fileupload');
 const newPostController = require('./controllers/newPost');
 const pagesController = require('./controllers/pagesController');
+const homeController = require('./controllers/home');
 
 const customMiddleware = (req, res, next) => {
     console.log('Custom middleware called');
@@ -41,10 +42,7 @@ app.use(customMiddleware);
 app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
-app.get('/', async (req, res) => {
-    const blogposts = await BlogPost.find({});
-    res.render('index', { blogposts });
-})
+app.get('/', homeController)
 
 app.get('/about', pagesController.about);
 
