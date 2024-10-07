@@ -15,6 +15,7 @@ const newUserController = require('./controllers/newUser');
 const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
+const expressSession = require('express-session');
 
 
 
@@ -29,6 +30,11 @@ mongoose.connect('mongodb://0.0.0.0:27017/blog_db', { useNewUrlParser: true });
 
 // Initialize express
 const app = new express();
+
+// Express Session middleware
+app.use(expressSession({
+    secret: 'keyboard cat'
+}))
 
 // Set templating engine
 app.set('view engine', 'ejs');
