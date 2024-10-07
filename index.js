@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const BlogPost = require('./models/BlogPost');
 const fileUpload = require('express-fileupload');
 const newPostController = require('./controllers/newPost');
+const getPostController = require('./controllers/getPost');
+const storePostController = require('./controllers/storePost');
 const pagesController = require('./controllers/pagesController');
 const homeController = require('./controllers/home');
 
@@ -48,25 +50,11 @@ app.get('/about', pagesController.about);
 
 app.get('/contact', pagesController.contact);
 
-app.get('/post/:id', async (req, res) => {
-    const blogpost = await BlogPost.findById(req.params.id);
-    res.render('post', {
-        blogpost
-    })
-})
+app.get('/post/:id', getPostController)
 
 app.get('/posts/new', newPostController)
 
-app.post('/posts/store', (req, res) => {
-    let image = req.files.image;
-    image.mv(path.resolve(__dirname, 'public/assets/img', image.name), async (error) => {
-        await BlogPost.create({
-            ...req.body,
-        image: "/assets/img/" + image.name
-    });
-        res.redirect('/');
-    });
-});
+app.post('/posts/store', storePostController);
 
 // Set port to listen on
 app.listen(4000, () => {
