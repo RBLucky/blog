@@ -12,6 +12,7 @@ const pagesController = require('./controllers/pagesController');
 const homeController = require('./controllers/home');
 const validateMiddleware = require('./middleware/validationMiddleware');
 const newUserController = require('./controllers/newUser');
+const storeUserController = require('./controllers/storeUser');
 
 
 // const customMiddleware = (req, res, next) => {
@@ -43,6 +44,9 @@ app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
 app.get('/auth/register', newUserController);
+
+app.post('./users/register', storeUserController);
+
 app.get('/', homeController)
 
 app.get('/about', pagesController.about);
