@@ -10,18 +10,12 @@ const getPostController = require('./controllers/getPost');
 const storePostController = require('./controllers/storePost');
 const pagesController = require('./controllers/pagesController');
 const homeController = require('./controllers/home');
+const validateMiddleware = require('./middleware/validationMiddleware');
 
-const customMiddleware = (req, res, next) => {
-    console.log('Custom middleware called');
-    next();
-};
-
-const validateMiddleware = (req, res, next) => {
-    if (req.files == null || req.body.title == null) {
-        return res.redirect('/posts/new')
-    }
-    next()
-}
+// const customMiddleware = (req, res, next) => {
+//     console.log('Custom middleware called');
+//     next();
+// };
 
 mongoose.connect('mongodb://0.0.0.0:27017/blog_db', { useNewUrlParser: true });
 
