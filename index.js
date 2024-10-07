@@ -50,7 +50,7 @@ app.get('/', homeController);
 
 app.get('/auth/login', loginController);
 
-app.post('/users.login', loginUserController);
+app.post('/users/login', loginUserController);
 
 app.get('/auth/register', newUserController);
 
