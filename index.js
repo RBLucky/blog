@@ -48,9 +48,7 @@ app.get('/', async (req, res) => {
 
 app.get('/about', pagesController.about);
 
-app.get('/contact', (req, res) => {
-    res.render('contact')
-})
+app.get('/contact', pagesController.contact);
 
 app.get('/post/:id', async (req, res) => {
     const blogpost = await BlogPost.findById(req.params.id);
