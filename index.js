@@ -46,7 +46,7 @@ app.get('/', async (req, res) => {
     res.render('index', { blogposts });
 })
 
-app.get('/about', pagesController);
+app.get('/about', pagesController.about);
 
 app.get('/contact', (req, res) => {
     res.render('contact')
