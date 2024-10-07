@@ -14,6 +14,8 @@ const validateMiddleware = require('./middleware/validationMiddleware');
 const newUserController = require('./controllers/newUser');
 const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
+const loginUserController = require('./controllers/loginUser');
+
 
 
 // const customMiddleware = (req, res, next) => {
@@ -47,6 +49,8 @@ app.use('/posts/store', validateMiddleware);
 app.get('/', homeController);
 
 app.get('/auth/login', loginController);
+
+app.post('/users.login', loginUserController);
 
 app.get('/auth/register', newUserController);
 
