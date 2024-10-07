@@ -43,11 +43,11 @@ app.use(fileUpload());
 app.use('/posts/store', validateMiddleware);
 
 // Route handling for each route
+app.get('/', homeController)
+
 app.get('/auth/register', newUserController);
 
-app.post('./users/register', storeUserController);
-
-app.get('/', homeController)
+app.post('/users/register', storeUserController);
 
 app.get('/about', pagesController.about);
 
