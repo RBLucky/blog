@@ -18,6 +18,7 @@ const loginUserController = require('./controllers/loginUser');
 const expressSession = require('express-session');
 const authMiddleware = require('./middleware/authMiddleware');
 const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware');
+const logoutController = require('./controllers/logout');
 
 
 
@@ -80,6 +81,8 @@ app.get('/post/:id', getPostController)
 app.get('/posts/new', authMiddleware, newPostController)
 
 app.post('/posts/store', authMiddleware, storePostController);
+
+app.get('/auth/logout', logoutController);
 
 // Set port to listen on
 app.listen(4000, () => {
