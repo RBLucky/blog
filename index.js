@@ -16,6 +16,7 @@ const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 const expressSession = require('express-session');
+const authMiddleware = require('./middleware/authMiddleware');
 
 
 
@@ -68,9 +69,9 @@ app.get('/contact', pagesController.contact);
 
 app.get('/post/:id', getPostController)
 
-app.get('/posts/new', newPostController)
+app.get('/posts/new', authMiddleware, newPostController)
 
-app.post('/posts/store', storePostController);
+app.post('/posts/store', authMiddleware, storePostController);
 
 // Set port to listen on
 app.listen(4000, () => {
