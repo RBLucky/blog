@@ -1,9 +1,9 @@
 // Import modules
 const express = require('express');
-const path = require('path');
+//const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const BlogPost = require('./models/BlogPost');
+//const BlogPost = require('./models/BlogPost');
 const fileUpload = require('express-fileupload');
 const newPostController = require('./controllers/newPost');
 const getPostController = require('./controllers/getPost');
