@@ -23,6 +23,13 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <p>Create a new account to access more features. Be able to create your own blog posts for everyone to see!</p>
                         <div class="my-5">
+                            <% if(errors != null && errors.length > 0){ %>
+                                <ul class="list-group"></ul>
+                                    <% for (var i = 0; i < errors.length; i++) { %>
+                                        <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+                                    <% } %>
+                                </ul>
+                            <% } %>                                
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
                             <!-- * * * * * * * * * * * * * * *-->
