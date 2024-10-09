@@ -19,6 +19,7 @@ const expressSession = require('express-session');
 const authMiddleware = require('./middleware/authMiddleware');
 const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware');
 const logoutController = require('./controllers/logout');
+const flash = require('connect-flash');
 
 
 
@@ -50,6 +51,8 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 app.use(fileUpload());
+
+app.use(flash());
 
 global.loggedIn = null;
 
