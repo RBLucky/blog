@@ -11,7 +11,6 @@ module.exports = (req, res) => {
             const validationErrors = Object.keys(error.errors).map(key => console.log(error.errors[key].message)
             )
             req.session.validationErrors = validationErrors
-            res.redirect('/auth/register');
-
+            return res.redirect('/auth/register');
         })
 }
