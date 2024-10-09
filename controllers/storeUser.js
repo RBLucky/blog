@@ -8,6 +8,7 @@ module.exports = (req, res) => {
             res.redirect('/');
         })
         .catch((error) => {
+            Object.keys(error.errors).map(key => error.errors[key].message);
             console.log(error)
             res.redirect('/auth/register');
         })
